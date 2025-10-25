@@ -5,7 +5,7 @@ namespace App\Http\Controllers\clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TourController extends Controller
+class CheckOutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class TourController extends Controller
      */
     public function index()
     {
-        return view('clients.tour');
+        $title = 'Trang Check Out';
+        return view('clients.checkout', compact('title',));
     }
 
     /**

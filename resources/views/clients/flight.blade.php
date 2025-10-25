@@ -1,7 +1,6 @@
 @include('clients.blocks.header')
 
-@include('clients.blocks.banner')
-<main class="main">
+@include('clients.blocks.banner2')
 
         <!-- breadcrumb -->
         {{-- <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">

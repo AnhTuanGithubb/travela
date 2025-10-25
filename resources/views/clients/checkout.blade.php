@@ -29,18 +29,9 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>First Name</label>
+                                                <label>Name</label>
                                                 <div class="form-group-icon">
                                                     <input type="text" class="form-control" placeholder="First Name">
-                                                    <i class="far fa-user"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <div class="form-group-icon">
-                                                    <input type="text" class="form-control" placeholder="Last Name">
                                                     <i class="far fa-user"></i>
                                                 </div>
                                             </div>
@@ -66,7 +57,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Address 1</label>
+                                                <label>Tour</label>
                                                 <div class="form-group-icon">
                                                     <input type="text" class="form-control" placeholder="Address Line">
                                                     <i class="far fa-map-location-dot"></i>
@@ -75,7 +66,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Address 2</label>
+                                                <label>Address You</label>
                                                 <div class="form-group-icon">
                                                     <input type="text" class="form-control" placeholder="Address Line">
                                                     <i class="far fa-map-location-dot"></i>
@@ -84,48 +75,22 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>Country</label>
-                                                <div class="form-group-icon">
-                                                    <select class="select">
-                                                        <option value="">Select Country</option>
-                                                        <option value="1">Australia</option>
-                                                        <option value="2">Brazil</option>
-                                                        <option value="3">Canada</option>
-                                                        <option value="4">United Kingdom</option>
-                                                        <option value="5">United States</option>
-                                                    </select>
-                                                    <i class="far fa-globe"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Age</label>
+                                                <label>numAdults</label>
                                                 <div class="form-group-icon">
                                                     <input type="text" class="form-control" placeholder="Age">
                                                     <i class="fab fa-pagelines"></i>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>City</label>
+                                                <label>numChildren</label>
                                                 <div class="form-group-icon">
-                                                    <input type="text" class="form-control" placeholder="City">
-                                                    <i class="far fa-location-dot"></i>
+                                                    <input type="text" class="form-control" placeholder="Age">
+                                                    <i class="fab fa-pagelines"></i>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>State</label>
-                                                <div class="form-group-icon">
-                                                    <input type="text" class="form-control" placeholder="State">
-                                                    <i class="far fa-location-dot"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label>Zip Code</label>
                                                 <div class="form-group-icon">
@@ -136,7 +101,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Additional Info</label>
+                                                <label>message</label>
                                                 <div class="form-group-icon">
                                                     <textarea class="form-control" cols="30" rows="5"
                                                         placeholder="Additional Comment"></textarea>
@@ -148,7 +113,63 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="booking-widget">
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="booking-summary">
+                            <h4 class="mb-30">Booking Summary</h4>
+                            <div class="booking-property-img">
+                                <img src="assets/img/hotel/room/01.jpg" alt="">
+                            </div>
+                            <div class="booking-property-content">
+                                <div class="booking-property-title">
+                                    <div>
+                                        <h5>Premium Deluxe Room</h5>
+                                        <p><i class="far fa-map-marker-alt"></i> 25/B Milford Road, New York, USA</p>
+                                    </div>
+                                    <a href="#" class="book-edit-btn"><i class="far fa-pen"></i></a>
+                                </div>
+                                <div class="booking-property-rate">
+                                    <span class="badge"><i class="far fa-star"></i> 4.5/5</span>
+                                    <span class="rate-type">Average</span>
+                                    <span class="rate-text">(35 Reviews)</span>
+                                </div>
+                            </div>
+                            <div class="booking-info-summary">
+                                <h5>Order Info</h5>
+                                <ul>
+                                    <li>Check In: <span>20 Aug 2025 at 10:10 AM</span></li>
+                                    <li>Check Out: <span>25 Aug 2025 at 10:10 AM</span></li>
+                                    <li>Room Type: <span>King Luxury</span></li>
+                                    <li>Room: <span>2 Rooms</span></li>
+                                    <li>Per Room Price: <span>$250</span></li>
+                                    <li>Adults: <span>4</span></li>
+                                    <li>Childs: <span>2</span></li>
+                                    <li>Stay: <span>5 Nights</span></li>
+                                </ul>
+                            </div>
+                            <div class="booking-order-info">
+                                <div class="booking-pay-info">
+                                    <h5>Booking Payment</h5>
+                                    <ul>
+                                        <li>Sub Total: <span>$50,540.00</span></li>
+                                        <li>Discount: <span>$600.00</span></li>
+                                        <li>Taxes: <span>$560.00</span></li>
+                                        <li class="order-total">You Pay: <span>$51,543.00</span></li>
+                                    </ul>
+                                </div>
+
+                                <div class="text-end mt-40">
+                                    <a href="#" class="theme-btn d-block">Confirm Booking<i
+                                            class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- checkout area end -->
+         {{-- <div class="booking-widget"> --}}
                             <h4 class="booking-widget-title">Your Card Information</h4>
                             <div class="booking-payment-area">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -315,62 +336,5 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="booking-summary">
-                            <h4 class="mb-30">Booking Summary</h4>
-                            <div class="booking-property-img">
-                                <img src="assets/img/hotel/room/01.jpg" alt="">
-                            </div>
-                            <div class="booking-property-content">
-                                <div class="booking-property-title">
-                                    <div>
-                                        <h5>Premium Deluxe Room</h5>
-                                        <p><i class="far fa-map-marker-alt"></i> 25/B Milford Road, New York, USA</p>
-                                    </div>
-                                    <a href="#" class="book-edit-btn"><i class="far fa-pen"></i></a>
-                                </div>
-                                <div class="booking-property-rate">
-                                    <span class="badge"><i class="far fa-star"></i> 4.5/5</span>
-                                    <span class="rate-type">Average</span>
-                                    <span class="rate-text">(35 Reviews)</span>
-                                </div>
-                            </div>
-                            <div class="booking-info-summary">
-                                <h5>Order Info</h5>
-                                <ul>
-                                    <li>Check In: <span>20 Aug 2025 at 10:10 AM</span></li>
-                                    <li>Check Out: <span>25 Aug 2025 at 10:10 AM</span></li>
-                                    <li>Room Type: <span>King Luxury</span></li>
-                                    <li>Room: <span>2 Rooms</span></li>
-                                    <li>Per Room Price: <span>$250</span></li>
-                                    <li>Adults: <span>4</span></li>
-                                    <li>Childs: <span>2</span></li>
-                                    <li>Stay: <span>5 Nights</span></li>
-                                </ul>
-                            </div>
-                            <div class="booking-order-info">
-                                <div class="booking-pay-info">
-                                    <h5>Booking Payment</h5>
-                                    <ul>
-                                        <li>Sub Total: <span>$50,540.00</span></li>
-                                        <li>Discount: <span>$600.00</span></li>
-                                        <li>Taxes: <span>$560.00</span></li>
-                                        <li class="order-total">You Pay: <span>$51,543.00</span></li>
-                                    </ul>
-                                </div>
-
-                                <div class="text-end mt-40">
-                                    <a href="#" class="theme-btn d-block">Confirm Booking<i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- checkout area end -->
-
     </main>
   @include('clients.blocks.footer')

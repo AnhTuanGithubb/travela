@@ -1,21 +1,9 @@
 
      @include('clients.blocks.header')
 
-@include('clients.blocks.banner')
+@include('clients.blocks.banner2')
 
- <main class="main">
-
-        <!-- breadcrumb -->
-        {{-- <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
-            <div class="container">
-                <h2 class="breadcrumb-title">404 Error</h2>
-                <ul class="breadcrumb-menu">
-                    <li><a href="index-2.html">Home</a></li>
-                    <li class="active">404 Error</li>
-                </ul>
-            </div>
-        </div> --}}
-        <!-- breadcrumb end -->
+ 
 
 
         <!-- error area -->

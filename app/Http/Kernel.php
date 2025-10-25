@@ -52,6 +52,7 @@ class Kernel extends HttpKernel
      *
      * @var array<string, class-string|string>
      */
+    
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
@@ -63,5 +64,8 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        //check đang nhap moi cho dat tour
+        'checklogin' => \App\Http\Middleware\CheckLogin::class,
     ];
 }

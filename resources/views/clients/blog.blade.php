@@ -1,20 +1,6 @@
  @include('clients.blocks.header')
 
-@include('clients.blocks.banner')
-
-<main class="main">
-
-        <!-- breadcrumb -->
-        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/01.jpg)">
-            <div class="container">
-                <h2 class="breadcrumb-title">Our Blog</h2>
-                <ul class="breadcrumb-menu">
-                    <li><a href="index-2.html">Home</a></li>
-                    <li class="active">Our Blog</li>
-                </ul>
-            </div>
-        </div>
-        <!-- breadcrumb end -->
+@include('clients.blocks.banner2')
 
 
         <!-- blog area -->

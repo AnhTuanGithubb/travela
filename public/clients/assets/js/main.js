@@ -409,12 +409,16 @@ Version         : 1.0
         $(".price-range").slider({
             step: 500,
             range: true,
-            min: 0,
-            max: 10000,
-            values: [1500, 5000],
-            slide: function (event, ui) { $(".priceRange").val("$" + ui.values[0].toLocaleString() + " - $" + ui.values[1].toLocaleString()); }
+            min: 100000,
+            max: 21000000,
+            values: [5000000, 20000000],
+            slide: function (event, ui) {
+                 $(".priceRange").val(ui.values[0].toLocaleString('vi-VN') + "vnd"+" -" + ui.values[1].toLocaleString('vi-VN')+ "vnd"); }
         });
-        $(".priceRange").val("$" + $(".price-range").slider("values", 0).toLocaleString() + " - $" + $(".price-range").slider("values", 1).toLocaleString());
+        $(".priceRange").val(
+            $(".price-range").slider("values", 0).toLocaleString('vi-VN') +
+            "-"  + 
+            $(".price-range").slider("values", 1).toLocaleString('vi-VN')+ "vnd");
     });
 
 
@@ -590,8 +594,73 @@ Version         : 1.0
         $(e.target).closest(".flight-search-item").find('.swap-to').val(swapFrom);
     });
 
+    ///
+    
 
 })(jQuery);
+
+// $('#priceRange1').on('change', filterTours);
+//     $('input[name="domain"]').on('change', filterTours);
+//     $('input[name="filter_star"]').on('change', filterTours);
+//     $('input[name="duration"]').on('change', filterTours);
+
+
+//     function filterTours(){
+//         var price = $('#priceRange1').val();
+//         var domain = $('input[name="domain"]:checked').val();
+//         var star = $('input[name="filter_star"]:checked').val();
+//         var duration = $('input[name="duration"]:checked').val();
+
+//         formDataFilter = {
+//             'price' : price,
+//             'domain' : domain,
+//             'star' : star,
+//             'time' : duration
+//         }
+//         console.log(formDataFilter); // <--- thêm dòng này
+//         $.ajax({
+//             url : filterTourUrl,
+//             method: 'GET',
+//             data: formDataFilter,
+//             success: function(res){
+//                 $('#tours-container').html(res);
+//             }
+
+//         });
+//     }
+
+$('#priceRange1').on('change', filterTours);
+   $('input[name="domain"]').on('change', filterTours);
+        $('input[name="filter_star"]').on('change', filterTours);
+   $('input[name="duration"]').on('change', filterTours);
+
+function filterTours() {
+    var formDataFilter = {};
+
+    var price = $('#priceRange1').val();
+    var domain = $('input[name="domain"]:checked').val();
+    var star = $('input[name="filter_star"]:checked').val();
+    var duration = $('input[name="duration"]:checked').val();
+
+    // Chỉ thêm vào nếu người dùng chọn
+    if (price && price !== '0-0' && price !== '5.000.000-20.000.000vnd') formDataFilter.price = price;
+    if (domain) formDataFilter.domain = domain;
+    if (star) formDataFilter.star = star;
+    if (duration) formDataFilter.time = duration;
+
+    console.log(formDataFilter);
+
+    $.ajax({
+        url: filterTourUrl,
+        method: 'GET',
+        data: formDataFilter,
+        success: function(res) {
+            $('#tours-container').html(res);
+        }
+    });
+}
+
+
 
 
 

@@ -3145,6 +3145,10 @@ hero css
   margin-bottom: 25px;
   box-shadow: var(--box-shadow);
   transition: var(--transition);
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .tour-item:hover{

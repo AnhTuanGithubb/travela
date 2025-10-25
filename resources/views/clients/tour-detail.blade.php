@@ -1,0 +1,1084 @@
+@include('clients.blocks.header')
+
+@include('clients.blocks.banner2')
+
+
+
+<!-- tour-single -->
+<div class="tour-single py-120">
+    <div class="container">
+        <div class="listing-wrapper">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="listing-content">
+                        <div class="listing-slider owl-carousel owl-theme">
+                            <img src="{{ asset('clients/assets/img/gallery-tour/' . $tourDetail->images[0] . '') }}"
+                                alt="">
+                            <img src="{{ asset('clients/assets/img/gallery-tour/' . $tourDetail->images[1] . '') }}"
+                                alt="">
+                            <img src="{{ asset('clients/assets/img/gallery-tour/' . $tourDetail->images[2] . '') }}"
+                                alt="">
+                            {{-- @foreach ($tourDetail->images as $image)
+        <img src="{{ asset('clients/assets/img/gallery-tour/' . $image) }}" alt="">
+    @endforeach --}}
+                        </div>
+                        <div class="listing-header">
+                            <div class="listing-header-info">
+                                <h4 class="listing-title">{{ $tourDetail->title }}</h4>
+                                <p class="listing-location"><i class="far fa-location-dot"></i>
+                                    {{ $tourDetail->destination }}</p>
+                            </div>
+                            <div class="listing-rate">
+                                @php
+                                             $rating = round($tourDetail->star);
+                                         @endphp
+
+                                         @for ($i = 0; $i < $rating; $i++)
+                                             <i class="fas fa-star text-warning"></i>
+                                         @endfor
+                                <span class="listing-rate-type">Excellent</span>
+                                <span class="listing-rate-review">(2.5k Lượt xem)</span>
+                            </div>
+                        </div>
+                        <div class="listing-item">
+                            <div class="row g-4">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="listing-feature">
+                                        <div class="listing-feature-icon">
+                                            <i class="far fa-clock"></i>
+                                        </div>
+                                        <div class="listing-feature-content">
+                                            <h6>Thời gian</h6>
+                                            <span>{{ $tourDetail->time }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="listing-feature">
+                                        <div class="listing-feature-icon">
+                                            <i class="far fa-calendar-days"></i>
+                                        </div>
+                                        <div class="listing-feature-content">
+                                            <h6>Khởi hành - Kết thúc</h6>
+                                            <span>{{ $tourDetail->startDate }} - {{ $tourDetail->endDate }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="listing-feature">
+                                        <div class="listing-feature-icon">
+                                            <i class="far fa-users"></i>
+                                        </div>
+                                        <div class="listing-feature-content">
+                                            <h6>Số lượng</h6>
+                                            <span>{{ $tourDetail->quantity }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="listing-feature">
+                                        <div class="listing-feature-icon">
+                                            <i class="far fa-earth-americas"></i>
+                                        </div>
+                                        <div class="listing-feature-content">
+                                            <h6>Tour Type</h6>
+                                            <span>Historical Place</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listing-item">
+                            <h4 class="mb-3">Khám phá Tour {{ $tourDetail->destination }}</h4>
+                            <p>{!! $tourDetail->description !!}</p>
+                            <div class="listing-highlight">
+                                <h5>Điểm nổi bật</h5>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <ul class="list">
+                                            <li>Khác với niềm tin phổ biến</li>
+                                            <li>Hơn thế nữa, từ mọi nơi</li>
+                                            <li>Như là kiến trúc sư của cuộc đời mình</li>
+                                            <li>Không ai tránh được niềm đau</li>
+                                            <li>Lý do tại sao niềm đau lại lớn đến thế</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ul class="list">
+                                            <li>Khác với niềm tin phổ biến</li>
+                                            <li>Hơn thế nữa, từ mọi nơi</li>
+                                            <li>Như là kiến trúc sư của cuộc đời mình</li>
+                                            <li>Không ai tránh được niềm đau</li>
+                                            <li>Lý do tại sao niềm đau lại lớn đến thế</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="listing-included">
+                                        <h5>Included</h5>
+                                        <ul class="list">
+                                            <li>Airfare</li>
+                                            <li>Local Transportation</li>
+                                            <li>Accommodation</li>
+                                            <li>Tour Guide</li>
+                                            <li>Air Conditioned Coach</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="listing-notincluded">
+                                        <h5>Not Included</h5>
+                                        <ul class="list">
+                                            <li>Entrance Fees</li>
+                                            <li>Guide Gratuity</li>
+                                            <li>Food And Drinks</li>
+                                            <li>Digital Guide Available</li>
+                                            <li>Superior Coach</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="listing-item">
+                            <h4 class="mb-3">Lịch trình Trong chuyến đi</h4>
+                            <div class="itinerary-content-box">
+                                @php
+                                    $day = 1;
+                                    $i = 0;
+                                    $totalImages = count($tourDetail->images);
+                                @endphp
+
+                                @foreach ($tourDetail->timeline as $timeline)
+                                    <div class="itinerary-single-box">
+                                        <span>{{ $day }}</span>
+
+                                        {{-- Lấy ảnh tương ứng, nếu hết thì quay lại ảnh đầu tiên --}}
+                                        <img src="{{ asset('clients/assets/img/gallery-tour/' . $tourDetail->images[$i % $totalImages] . '') }}"
+                                            alt="Ảnh ngày {{ $day }}">
+
+                                        <h3>Ngày {{ $day++ }} - {{ $timeline->title }}</h3>
+                                        <p>{{ $timeline->description }}</p>
+                                    </div>
+
+                                    @php
+                                        $i++;
+                                    @endphp
+                                @endforeach
+
+
+
+                            </div>
+                        </div>
+                        <div class="listing-item">
+                            <h4 class="mb-4">Location Map</h4>
+                            <div class="contact-map">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447748!3d40.759040329405195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a01c8df6fb3cb8!2sSolomon%20R.%20Guggenheim%20Museum!5e0!3m2!1sen!2sbd!4v1619410634508!5m2!1sen!2s"
+                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                        <div class="listing-item faq-area">
+                            <h4 class="mb-4">Faq's</h4>
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading1">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                            <span><i class="far fa-question"></i></span> What Are The
+                                            Charges Of Services ?
+                                        </button>
+                                    </h2>
+                                    <div id="collapse1" class="accordion-collapse collapse show"
+                                        aria-labelledby="heading1" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            We denounce with righteous indignation and dislike men who
+                                            are so beguiled and demoralized by the charms of pleasure of the
+                                            moment, so
+                                            blinded by desirente odio dignissim quam.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading2">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false"
+                                            aria-controls="collapse2">
+                                            <span><i class="far fa-question"></i></span> How Can I Become A
+                                            Member
+                                            ?
+                                        </button>
+                                    </h2>
+                                    <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            We denounce with righteous indignation and dislike men who
+                                            are so beguiled and demoralized by the charms of pleasure of the
+                                            moment, so
+                                            blinded by desirente odio dignissim quam.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading3">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapse3"
+                                            aria-expanded="false" aria-controls="collapse3">
+                                            <span><i class="far fa-question"></i></span> Can I Upgrade My
+                                            Plan Any Time ?
+                                        </button>
+                                    </h2>
+                                    <div id="collapse3" class="accordion-collapse collapse"
+                                        aria-labelledby="heading3" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            We denounce with righteous indignation and dislike men who
+                                            are so beguiled and demoralized by the charms of pleasure of the
+                                            moment, so
+                                            blinded by desirente odio dignissim quam.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listing-item">
+                            <h4 class="mb-3">Reviews</h4>
+                            <div class="listing-rating-box">
+                                <div class="listing-review-rating">
+                                    <div class="listing-rating-count">
+                                        <h2>4.5</h2>
+                                        <div class="listing-rating-star">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <p>Base On 15.5k Review</p>
+                                    </div>
+                                    <div class="listing-rating-range">
+                                        <div class="listing-rating-range-item">
+                                            <div class="listing-rating-range-star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <div class="listing-rating-range-bar">
+                                                <div class="listing-progress">
+                                                    <div class="listing-progress-width" style="width: 90%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="listing-rating-range-percentage">
+                                                <span>90%</span>
+                                            </div>
+                                        </div>
+                                        <div class="listing-rating-range-item">
+                                            <div class="listing-rating-range-star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="listing-rating-range-bar">
+                                                <div class="listing-progress">
+                                                    <div class="listing-progress-width" style="width: 80%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="listing-rating-range-percentage">
+                                                <span>80%</span>
+                                            </div>
+                                        </div>
+                                        <div class="listing-rating-range-item">
+                                            <div class="listing-rating-range-star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="listing-rating-range-bar">
+                                                <div class="listing-progress">
+                                                    <div class="listing-progress-width" style="width: 59%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="listing-rating-range-percentage">
+                                                <span>59%</span>
+                                            </div>
+                                        </div>
+                                        <div class="listing-rating-range-item">
+                                            <div class="listing-rating-range-star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="listing-rating-range-bar">
+                                                <div class="listing-progress">
+                                                    <div class="listing-progress-width" style="width: 70%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="listing-rating-range-percentage">
+                                                <span>70%</span>
+                                            </div>
+                                        </div>
+                                        <div class="listing-rating-range-item">
+                                            <div class="listing-rating-range-star">
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <div class="listing-rating-range-bar">
+                                                <div class="listing-progress">
+                                                    <div class="listing-progress-width" style="width: 49%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="listing-rating-range-percentage">
+                                                <span>49%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="listing-review">
+                                    <h5>Showing 1.2k Reviews</h5>
+                                    <div class="listing-review-item">
+                                        <div class="listing-review-author">
+                                            <img src="assets/img/account/01.jpg" alt="">
+                                            <div class="listing-review-author-info">
+                                                <div>
+                                                    <h6>Kenneth Evans</h6>
+                                                    <span><i class="far fa-clock"></i> 1 day ago</span>
+                                                </div>
+                                                <div class="listing-review-author-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            There are many variations of passages of Lorem Ipsum available,
+                                            but the majority have suffered alteration in some form, by
+                                            injected humourmust explain to you how all this mistaken idea of
+                                            denouncing pleasure words.
+                                        </p>
+                                        <div class="listing-review-reply">
+                                            <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
+                                                Reply</a>
+                                            <div class="review-reaction">
+                                                <a href="#" class="review-like active"><i
+                                                        class="fal fa-thumbs-up"></i> 15</a>
+                                                <a href="#" class="review-dislike"><i
+                                                        class="fal fa-thumbs-down"></i> 05</a>
+                                                <a href="#" class="review-love"><i class="fal fa-heart"></i>
+                                                    50</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="listing-review-item review-reply-item">
+                                        <div class="listing-review-author">
+                                            <img src="assets/img/account/02.jpg" alt="">
+                                            <div class="listing-review-author-info">
+                                                <div>
+                                                    <h6>Erich T. Genao</h6>
+                                                    <span><i class="far fa-clock"></i> 1 day ago</span>
+                                                </div>
+                                                <div class="listing-review-author-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            There are many variations of passages of Lorem Ipsum available,
+                                            but the majority have suffered alteration in some form, by
+                                            injected humour, or randomised words.
+                                        </p>
+                                        <div class="listing-review-reply">
+                                            <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
+                                                Reply</a>
+                                            <div class="review-reaction">
+                                                <a href="#" class="review-like"><i
+                                                        class="fal fa-thumbs-up"></i>
+                                                    15</a>
+                                                <a href="#" class="review-dislike active"><i
+                                                        class="fal fa-thumbs-down"></i> 05</a>
+                                                <a href="#" class="review-love"><i class="fal fa-heart"></i>
+                                                    50</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="listing-review-item">
+                                        <div class="listing-review-author">
+                                            <img src="assets/img/account/03.jpg" alt="">
+                                            <div class="listing-review-author-info">
+                                                <div>
+                                                    <h6>Jesse Sinkler</h6>
+                                                    <span><i class="far fa-clock"></i> 1 day ago</span>
+                                                </div>
+                                                <div class="listing-review-author-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            There are many variations of passages of Lorem Ipsum available,
+                                            but the majority have suffered alteration in some form, by
+                                            injected humourmust explain to you how all this mistaken idea of
+                                            denouncing pleasure words.
+                                        </p>
+                                        <div class="listing-review-reply">
+                                            <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
+                                                Reply</a>
+                                            <div class="review-reaction">
+                                                <a href="#" class="review-like"><i
+                                                        class="fal fa-thumbs-up"></i>
+                                                    15</a>
+                                                <a href="#" class="review-dislike"><i
+                                                        class="fal fa-thumbs-down"></i> 05</a>
+                                                <a href="#" class="review-love active"><i
+                                                        class="fal fa-heart"></i> 50</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center my-4">
+                                        <a href="#" class="theme-btn"> <span class="far fa-sync-alt"></span>
+                                            Load More</a>
+                                    </div>
+                                </div> --}}
+
+                                {{-- <div class="listing-review-form">
+                                    <h4>Leave A Review</h4>
+                                    <form action="#">
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <label class="star-label">Your Rating</label>
+                                                <div class="listing-review-form-star">
+                                                    <div class="star-rating-wrapper">
+                                                        <div class="star-rating-box">
+                                                            <input type="radio" name="rating" value="5"
+                                                                id="star-5"> <label for="star-5">&#9733;</label>
+                                                            <input type="radio" name="rating" value="4"
+                                                                id="star-4"> <label for="star-4">&#9733;</label>
+                                                            <input type="radio" name="rating" value="3"
+                                                                id="star-3"> <label for="star-3">&#9733;</label>
+                                                            <input type="radio" name="rating" value="2"
+                                                                id="star-2"> <label for="star-2">&#9733;</label>
+                                                            <input type="radio" name="rating" value="1"
+                                                                id="star-1"> <label for="star-1">&#9733;</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="Your Name*">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control"
+                                                        placeholder="Your Email*">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" cols="30" rows="5" placeholder="Write Your Review*"></textarea>
+                                        </div>
+                                        <button class="theme-btn" type="button">Leave A Review</button>
+                                    </form>
+                                </div> --}}
+
+                                <div class="listing-review">
+                                    <h5>{{ $reviews->count() }} Reviews</h5>
+
+                                    @if ($reviews->count() > 0)
+                                        @foreach ($reviews as $review)
+                                            <div class="listing-review-item">
+                                                <div class="listing-review-author">
+                                                    {{-- Nếu bạn chưa có ảnh người dùng, dùng ảnh mặc định 
+                                                        SAU NÀY SẼ HIỆN ẢNH TỪ PROFILE CỦA NGƯỜI DÙNG CLIENTS
+                                                    --}}
+                                                    <img src="{{ asset('clients/assets/img/account/default.jpg') }}"
+                                                        alt="User Avatar">
+
+                                                    <div class="listing-review-author-info">
+                                                        <div>
+                                                            <h6>{{ $review->name }}</h6>
+                                                            <span>
+                                                                <i class="far fa-clock"></i>
+                                                                {{ \Carbon\Carbon::parse($review->timestamp)->format('H:i d/m/Y') }}
+                                                            </span>
+                                                        </div>
+
+                                                        {{-- Hiển thị sao đánh giá --}}
+                                                        <div class="listing-review-author-rating">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $review->rating)
+                                                                    <i class="fas fa-star"></i>
+                                                                @else
+                                                                    <i class="far fa-star"></i>
+                                                                @endif
+                                                            @endfor
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {{-- Nội dung comment --}}
+                                                <p>{{ $review->comment }}</p>
+
+                                                {{-- Khu vực phản hồi / tương tác (hiện tại chỉ là giao diện) --}}
+                                                <div class="listing-review-reply">
+                                                    <a href="#" class="review-reply-btn"><i
+                                                            class="fal fa-reply"></i> Reply</a>
+                                                    <div class="review-reaction">
+                                                        <a href="#" class="review-like"><i
+                                                                class="fal fa-thumbs-up"></i> 0</a>
+                                                        <a href="#" class="review-dislike"><i
+                                                                class="fal fa-thumbs-down"></i> 0</a>
+                                                        <a href="#" class="review-love"><i
+                                                                class="fal fa-heart"></i> 0</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <p class="text-muted">Chưa có đánh giá nào cho tour này.</p>
+                                    @endif
+
+                                    {{-- Nút tải thêm (tạm thời tĩnh) --}}
+                                    <div class="text-center my-4">
+                                        <a href="/tour-detail/{{ $tourDetail->tourId }}" class="theme-btn">
+                                            <span class="far fa-sync-alt"></span> Load More
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <!-- Form gửi đánh giá -->
+                                {{-- <div class="listing-review-form mt-5">
+                                    <h4>Leave A Review</h4>
+
+                                    <!-- Thông báo AJAX -->
+                                    <div id="reviewMessage" style="display:none;" class="alert mt-3"></div>
+
+                                    <form id="reviewForm" action="{{ route('review.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="tourid" value="{{ $tourDetail->tourId }}">
+
+                                        <!-- Rating -->
+                                        <div class="form-group mb-3">
+                                            <label class="star-label">Your Rating</label>
+                                            <div class="star-rating-box">
+                                                <input type="radio" name="rating" value="5" id="star-5">
+                                                <label for="star-5">&#9733;</label>
+                                                <input type="radio" name="rating" value="4" id="star-4">
+                                                <label for="star-4">&#9733;</label>
+                                                <input type="radio" name="rating" value="3" id="star-3">
+                                                <label for="star-3">&#9733;</label>
+                                                <input type="radio" name="rating" value="2" id="star-2">
+                                                <label for="star-2">&#9733;</label>
+                                                <input type="radio" name="rating" value="1" id="star-1">
+                                                <label for="star-1">&#9733;</label>
+                                            </div>
+                                        </div>
+
+                                        <!-- Name & Email -->
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="text" name="name" class="form-control"
+                                                        placeholder="Your Name*" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" class="form-control"
+                                                        placeholder="Your Email*" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Comment -->
+                                        <div class="form-group">
+                                            <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Write Your Review*"
+                                                required></textarea>
+                                        </div>
+
+                                        <button type="submit" class="theme-btn">Leave A Review</button>
+                                    </form>
+                                </div> --}}
+                                <div class="listing-review-form mt-5">
+                                    <h4>Leave A Review</h4>
+
+                                    <!-- 🚫 ĐÃ XÓA: Loại bỏ DIV thông báo cũ (#reviewMessage) vì đã dùng Toastr -->
+                                    <!-- <div id="reviewMessage" style="display:none;" class="alert mt-3"></div> -->
+
+                                    <form id="reviewForm" action="{{ route('review.store') }}" method="POST">
+                                        @csrf
+                                        <!-- Giả định $tourDetail->tourId là hợp lệ và có sẵn -->
+                                        <input type="hidden" name="tourid" value="{{ $tourDetail->tourId }}">
+
+                                        <!-- Rating -->
+                                        <div class="form-group mb-3">
+                                            <label class="star-label">Your Rating</label>
+                                            <div class="star-rating-box">
+                                                <!-- Các radio button cho Rating (giữ nguyên) -->
+                                                <input type="radio" name="rating" value="5" id="star-5">
+                                                <label for="star-5">&#9733;</label>
+                                                <input type="radio" name="rating" value="4" id="star-4">
+                                                <label for="star-4">&#9733;</label>
+                                                <input type="radio" name="rating" value="3" id="star-3">
+                                                <label for="star-3">&#9733;</label>
+                                                <input type="radio" name="rating" value="2" id="star-2">
+                                                <label for="star-2">&#9733;</label>
+                                                <input type="radio" name="rating" value="1" id="star-1">
+                                                <label for="star-1">&#9733;</label>
+                                                <!-- Thêm một input ẩn để đảm bảo validation rating -->
+                                                <div class="rating-error-display text-danger mt-1"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Name & Email -->
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="text" name="name" class="form-control"
+                                                        placeholder="Your Name*" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" class="form-control"
+                                                        placeholder="Your Email*" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Comment -->
+                                        <div class="form-group">
+                                            <textarea name="comment" class="form-control" cols="30" rows="5" placeholder="Write Your Review*"
+                                                required></textarea>
+                                        </div>
+
+                                        <button type="submit" class="theme-btn">Leave A Review</button>
+                                    </form>
+                                </div>
+
+                                <!-- Hiển thị danh sách review -->
+                                <div class="listing-reviews mt-5">
+                                    <h4>Reviews</h4>
+                                    @forelse($reviews as $review)
+                                        <div class="review-item border-bottom py-3">
+                                            <div class="d-flex justify-content-between">
+                                                <strong>{{ $review->name }}</strong>
+                                                <span>
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <span
+                                                            style="color:{{ $i <= $review->rating ? '#FFD700' : '#ccc' }}">&#9733;</span>
+                                                    @endfor
+                                                </span>
+                                            </div>
+                                            <small>{{ $review->email }}</small>
+                                            <p class="mb-0">{{ $review->comment }}</p>
+                                            <small class="text-muted">{{ $review->timestamp }}</small>
+                                        </div>
+                                    @empty
+                                        <p>No reviews yet. Be the first to review this tour!</p>
+                                    @endforelse
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="booking-sidebar listing-side-content">
+                        <div class="booking-item">
+                            <div class="listing-price">
+                                <h4 class="listing-price-tag">Bestseller</h4>
+                                <div class="listing-price-amount">
+                                    Chỉ từ <span>{{ number_format($tourDetail->priceAdult, 0, ',', '.') }}</span>
+                                    {{-- <del>$590.00</del> --}}
+                                </div>
+                            </div>
+                            <div class="search-form">
+                                <form action="#">
+                                    <div class="tour-search-wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <div class="search-form-date">
+                                                        <div class="search-form-journey">
+                                                            <label>Ngày khởi hành</label>
+                                                            <div class="form-group-icon">
+                                                                {{-- Hiển thị ngày khởi hành lấy từ cơ sở dữ liệu, không cho chỉnh sửa --}}
+                                                                <input type="text" name="journey-date"
+                                                                    class="form-control"
+                                                                    value="{{ \Carbon\Carbon::parse($tourDetail->startDate)->format('d/m/Y') }}"
+                                                                    readonly>
+                                                                <i class="fal fa-calendar-days"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <div class="search-form-date">
+                                                        <div class="search-form-journey">
+                                                            <label>Ngày kết thúc</label>
+                                                            <div class="form-group-icon">
+                                                                {{-- Hiển thị ngày khởi hành lấy từ cơ sở dữ liệu, không cho chỉnh sửa --}}
+                                                                <input type="text" name="journey-date"
+                                                                    class="form-control"
+                                                                    value="{{ \Carbon\Carbon::parse($tourDetail->endDate)->format('d/m/Y') }}"
+                                                                    readonly>
+                                                                <i class="fal fa-calendar-days"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group dropdown passenger-box">
+                                                    <div class="passenger-class" role="menu"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <label>Rooms, Guests</label>
+                                                        <div class="form-group-icon">
+                                                            <div class="passenger-total">
+                                                                <span class="passenger-total-room">2</span> Rooms,
+                                                                <span class="passenger-total-amount">2</span> Guests
+                                                            </div>
+                                                            <i class="fal fa-user-tie-hair"></i>
+                                                        </div>
+                                                        <p class="passenger-class-name">Double Room</p>
+                                                    </div>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <div class="dropdown-item">
+                                                            <div class="passenger-item">
+                                                                <div class="passenger-info">
+                                                                    <h6>Adults</h6>
+                                                                    <p>12+ Years</p>
+                                                                </div>
+                                                                <div class="passenger-qty">
+                                                                    <button type="button" class="minus-btn"><i
+                                                                            class="far fa-minus"></i></button>
+                                                                    <input type="text" name="adult"
+                                                                        class="qty-amount passenger-adult"
+                                                                        value="2" readonly>
+                                                                    <button type="button" class="plus-btn"><i
+                                                                            class="far fa-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dropdown-item">
+                                                            <div class="passenger-item">
+                                                                <div class="passenger-info">
+                                                                    <h6>Children</h6>
+                                                                    <p>2-12 Years</p>
+                                                                </div>
+                                                                <div class="passenger-qty">
+                                                                    <button type="button" class="minus-btn"><i
+                                                                            class="far fa-minus"></i></button>
+                                                                    <input type="text" name="children"
+                                                                        class="qty-amount passenger-children"
+                                                                        value="0" readonly>
+                                                                    <button type="button" class="plus-btn"><i
+                                                                            class="far fa-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dropdown-item">
+                                                            <div class="passenger-item">
+                                                                <div class="passenger-info">
+                                                                    <h6>Infant</h6>
+                                                                    <p>Below 2 Years</p>
+                                                                </div>
+                                                                <div class="passenger-qty">
+                                                                    <button type="button" class="minus-btn"><i
+                                                                            class="far fa-minus"></i></button>
+                                                                    <input type="text" name="infant"
+                                                                        class="qty-amount passenger-infant"
+                                                                        value="0" readonly>
+                                                                    <button type="button" class="plus-btn"><i
+                                                                            class="far fa-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dropdown-item">
+                                                            <div class="passenger-item">
+                                                                <div class="passenger-info">
+                                                                    <h6>Rooms</h6>
+                                                                </div>
+                                                                <div class="passenger-qty">
+                                                                    <button type="button" class="minus-btn"><i
+                                                                            class="far fa-minus"></i></button>
+                                                                    <input type="text" name="room"
+                                                                        class="qty-amount passenger-room"
+                                                                        value="2" readonly>
+                                                                    <button type="button" class="plus-btn"><i
+                                                                            class="far fa-plus"></i></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dropdown-item">
+                                                            <h6 class="mb-3 mt-2">Room Type</h6>
+                                                            <div class="passenger-class-info">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        value="Single Room" name="room-type"
+                                                                        id="room-type10">
+                                                                    <label class="form-check-label" for="room-type10">
+                                                                        Single Room
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" checked
+                                                                        type="radio" value="Double Room"
+                                                                        name="room-type" id="room-type11">
+                                                                    <label class="form-check-label" for="room-type11">
+                                                                        Double Room
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        value="Deluxe Room" name="room-type"
+                                                                        id="room-type12">
+                                                                    <label class="form-check-label" for="room-type12">
+                                                                        Deluxe Room
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="listing-side-btn">
+                                            <button type="submit" class="theme-btn">
+                                                <span class="far fa-shopping-bag"></span>
+                                                {{-- <a href="{{route('booking')}}" class="border-btn"><i class="far fa-heart"></i>
+                                                Book Now</a> --}}
+                                                <a href="{{ route('clients.booking.create', ['id' => $tourDetail->tourId]) }}"
+                                                    class="theme-btn">
+                                                    <span class="far fa-shopping-bag"></span> Book Now
+                                                </a>
+
+
+                                            </button>
+                                            <a href="#" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                Wishlist</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="listing-side-share">
+                                <a href="#"><i class="far fa-share-nodes"></i> Share</a>
+                                <span><i class="far fa-eye"></i> 250 Views</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booking-sidebar listing-side-content mt-4">
+                        <h4 class="booking-title">Why Book With Us?</h4>
+                        <ul class="listing-side-list">
+                            <li><i class="far fa-dollar-sign"></i>Best Price Guarantee</li>
+                            <li><i class="far fa-headset"></i>24/7 Customer Care</li>
+                            <li><i class="far fa-globe"></i>Hand Picked Tours & Activities</li>
+                            <li><i class="far fa-flag"></i>Free Travel Insureance</li>
+                            <li><i class="far fa-car"></i>Comfortable And Hygienic Vehicle</li>
+                        </ul>
+                    </div>
+                    <div class="booking-sidebar listing-side-content mt-4">
+                        <h4 class="booking-title">Get A Question?</h4>
+                        <p>It is a long established fact that a reader will be distracted by the readable content
+                            layout.</p>
+                        <ul class="listing-side-list">
+                            <li><i class="far fa-phone"></i><a href="tel:+21234567897">+2 123 4567 897</a></li>
+                            <li><i class="far fa-envelope"></i><a
+                                    href="https://live.themewild.com/cdn-cgi/l/email-protection#9ff6f1f9f0dffae7fef2eff3fab1fcf0f2"><span
+                                        class="__cf_email__"
+                                        data-cfemail="f79e999198b7928f969a879b92d994989a">[email&#160;protected]</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="booking-sidebar listing-side-content mt-4">
+                        <h4 class="booking-title">Organized By</h4>
+                        <div class="listing-side-organizer">
+                            <div class="listing-side-organizer-img">
+                                <img src="assets/img/account/01.jpg" alt="">
+                            </div>
+                            <div class="listing-side-organizer-info">
+                                <h5 class="listing-side-organizer-name">Roltak Travel Agency</h5>
+                                <p>Member Since 2025</p>
+                                <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span> Send
+                                    Message</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- tour-single end -->
+
+</main>
+
+@include('clients.blocks.footer')
+
+<!-- ================== AJAX SCRIPT ================== -->
+{{-- <script>
+    $(document).ready(function() {
+        $('#reviewForm').on('submit', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    // Hiển thị thông báo thành công
+                    $('#reviewMessage')
+                        .removeClass('alert-danger')
+                        .addClass('alert-success')
+                        .text('🎉 Gửi bình luận thành công rồi nẹ!')
+                        .fadeIn()
+                        .delay(2000)
+                        .fadeOut();
+
+                    // Reset form
+                    $('#reviewForm')[0].reset();
+
+                    // Thêm bình luận mới vào danh sách
+                    if (response.review) {
+                        let stars = '';
+                        for (let i = 0; i < response.review.rating; i++) {
+                            stars += '<i class="fas fa-star"></i>';
+                        }
+
+                        let newReview = `
+                        <div class="listing-review-item">
+                            <div class="listing-review-author">
+                                <img src="{{ asset('clients/assets/img/account/default.jpg') }}" alt="">
+                                <div class="listing-review-author-info">
+                                    <div>
+                                        <h6>${response.review.name}</h6>
+                                        <span><i class="far fa-clock"></i> ${response.review.time}</span>
+                                    </div>
+                                    <div class="listing-review-author-rating">
+                                        ${stars}
+                                    </div>
+                                </div>
+                            </div>
+                            <p>${response.review.comment}</p>
+                        </div>
+                    `;
+                        $('.listing-review').prepend(newReview);
+                    }
+                },
+                error: function(xhr) {
+                    $('#reviewMessage')
+                        .removeClass('alert-success')
+                        .addClass('alert-danger')
+                        .text('❌ Có lỗi xảy ra, vui lòng thử lại!')
+                        .fadeIn()
+                        .delay(2000)
+                        .fadeOut();
+                }
+            });
+        });
+    });
+</script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<!-- 3. SCRIPT AJAX CHO FORM REVIEW -->
+<script>
+    $(document).ready(function() {
+        // Cấu hình Toastr (Chỉ cần làm 1 lần, nếu đã có trong layout chính thì bỏ qua)
+        if (typeof toastr !== 'undefined') {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "5000",
+            };
+        }
+
+        $('#reviewForm').on('submit', function(e) {
+            e.preventDefault();
+
+            // Kiểm tra Rating đã được chọn chưa
+            if (!$('input[name="rating"]:checked').val()) {
+                toastr.error("Vui lòng chọn số sao đánh giá.", "Lỗi!");
+                return;
+            }
+
+            let formData = $(this).serialize();
+
+            $.ajax({
+                url: "{{ route('review.store') }}",
+                type: "POST",
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        // ✅ SỬ DỤNG TOASTR CHO THÀNH CÔNG
+                        toastr.success("Đánh giá của bạn đã được gửi thành công!",
+                            "Thành công!");
+
+                        // Reset Form và Rating
+                        $('#reviewForm')[0].reset();
+                        // Xóa trạng thái check của rating
+                        $('input[name="rating"]').prop('checked', false);
+
+                    } else {
+                        // ❌ LỖI KHÔNG MONG MUỐN (Controller trả về success: false)
+                        toastr.error("Có lỗi xảy ra khi gửi đánh giá. Vui lòng thử lại.",
+                            "Lỗi!");
+                    }
+                },
+                error: function(xhr) {
+                    let errors = xhr.responseJSON?.errors;
+                    if (errors) {
+                        // Xử lý và hiển thị lỗi Validation
+                        let message = "";
+                        // Lấy lỗi đầu tiên của mỗi trường và gộp lại
+                        $.each(errors, function(key, value) {
+                            message += `<div>${value[0]}</div>`;
+                        });
+
+                        // ❌ SỬ DỤNG TOASTR CHO LỖI VALIDATION
+                        toastr.error(message, "Lỗi Validation");
+
+                    } else {
+                        // Lỗi server (500)
+                        toastr.error("Gửi đánh giá thất bại. Lỗi máy chủ.",
+                        "Lỗi Hệ thống!");
+                    }
+                }
+            });
+        });
+    });
+</script>
