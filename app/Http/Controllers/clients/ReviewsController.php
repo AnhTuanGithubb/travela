@@ -5,52 +5,56 @@ namespace App\Http\Controllers\clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\clients\Review;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon; // Sử dụng Carbon cho việc định dạng thời gian
+use Carbon\Carbon;
 
 class ReviewsController extends Controller
 {
     public function store(Request $request)
     {
-        // 1. Lấy User ID từ Session (BƯỚC MỚI)
+        // 1. Lấy user từ session
         $user = $request->session()->get('user');
-        $userId = $user['id'] ?? null; // Lấy ID nếu có, nếu không có user thì gán là null
+        $userId = $user['id'] ?? null;
 
-        // Kiểm tra xem người dùng có cần đăng nhập để đánh giá không (Tùy theo logic của bạn)
-        // Nếu bạn muốn bắt buộc đăng nhập, hãy thêm kiểm tra sau:
-        /*
         if (!$userId) {
-             return response()->json(['success' => false, 'message' => 'Vui lòng đăng nhập để đánh giá.'], 401);
+            return response()->json(['success' => false, 'message' => 'Bạn cần đăng nhập để đánh giá.']);
         }
-        */
 
-        // 2. Kiểm tra dữ liệu đầu vào
+        // 2. Validate dữ liệu đầu vào
         $validated = $request->validate([
-            'tourid' => 'required|integer',
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'rating' => 'nullable|integer|min:1|max:5',
+            'tourid'  => 'required|integer',
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email',
+            'rating'  => 'nullable|integer|min:1|max:5',
             'comment' => 'required|string|max:1000',
         ]);
 
-        // 3. Lưu dữ liệu vào CSDL (THÊM userId)
-        $id = DB::table('tbl_reviews')->insertGetId([
-            'tourid' => $validated['tourid'],
-            'userId' => $userId, // <--- ĐÃ THÊM: Gán userId từ session
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'rating' => $validated['rating'] ?? 0,
-            'comment' => $validated['comment'],
+        // 3. Tạo review mới
+        $review = Review::create([
+            'tourid'    => $validated['tourid'],
+            'userid'    => $userId,
+            'name'      => $validated['name'],
+            'email'     => $validated['email'],
+            'rating'    => $validated['rating'] ?? 0,
+            'comment'   => $validated['comment'],
             'timestamp' => now(),
         ]);
 
-        // 4. Lấy lại review vừa thêm và định dạng thời gian
-        $review = DB::table('tbl_reviews')->where('reviewId', $id)->first();
-        
-        // Sử dụng Carbon để định dạng chính xác
-        $review->time = Carbon::parse($review->timestamp)->format('H:i d/m/Y');
+        // 4. Lấy lại review vừa tạo kèm thông tin user
+        $review = Review::with('user')->find($review->reviewId);
 
-        // 5. Trả về JSON để AJAX xử lý
-        return response()->json(['success' => true, 'review' => $review]);
+        // 5. Định dạng dữ liệu trả về
+        return response()->json([
+            'success' => true,
+            'review' => [
+                'name' => $review->name,
+                'email' => $review->email,
+                'comment' => $review->comment,
+                'rating' => $review->rating,
+                'time' => Carbon::parse($review->timestamp)->format('H:i d/m/Y'),
+                'avatar' => asset(
+                    'clients/assets/img/account/' . ($review->user->avatar ?? 'default-avatar.png')
+                ),
+            ]
+        ]);
     }
 }

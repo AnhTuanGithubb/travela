@@ -443,7 +443,8 @@
                                          @endfor
 
 
-                                         <span class="hotel-rate-review">(2.5k Reviews)</span>
+                                         <span><i class="far fa-eye"></i> {{ number_format($tour->view) }} lượt xem</span>
+
                                      </div>
                                      <div class="tour-duration"><i class="far fa-clock"></i>{{ $tour->time }}</div>
                                      <div class="tour-bottom">

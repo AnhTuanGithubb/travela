@@ -5,6 +5,7 @@ namespace App\Http\Controllers\clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\clients\Register;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -26,6 +27,7 @@ class RegisterController extends Controller
             'userName' => 'required|string|max:50',
             'email' => 'required|email|unique:tbl_users,email',
             'password' => 'required|min:3|confirmed',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // thêm dòng này
         ], [
             'userName.required' => 'Vui lòng nhập họ tên.',
             'email.required' => 'Vui lòng nhập email.',
@@ -34,13 +36,25 @@ class RegisterController extends Controller
             'password.required' => 'Vui lòng nhập mật khẩu.',
             'password.min' => 'Mật khẩu tối thiểu 3 ký tự.',
             'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+            'avatar.image' => 'Avatar phải là định dạng ảnh.',
+            'avatar.mimes' => 'Ảnh phải có định dạng jpg, jpeg, png.',
+            'avatar.max' => 'Ảnh tối đa 2MB.',
         ]);
 
-        // Tạo user mới
+        // 🖼️ Xử lý avatar
+        if ($request->hasFile('avatar')) {
+            $avatarName = time() . '.' . $request->avatar->extension();
+            $request->avatar->move(public_path('clients/assets/img/account/'), $avatarName);
+        } else {
+            $avatarName = '01.jpg'; // ảnh mặc định nếu người dùng không tải lên
+        }
+
+        // 🧾 Tạo user mới
         Register::create([
             'userName' => $request->userName,
             'email' => $request->email,
-            'passWord' => md5($request->password), // ⚙️ mã hóa bằng MD5
+            'passWord' => Hash::make($request->password),
+            'avatar' => $avatarName,
             'isActive' => 'y',
             'status' => 'a',
             'ipAddress' => $request->ip(),

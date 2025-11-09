@@ -176,7 +176,7 @@
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('register.index') }}">Đăng ký</a></li>
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('blog') }}">Tôi</a></li>
+                                                            href="{{ route('infor') }}">Tôi</a></li>
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('login') }}">Đăng nhập</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('blog') }}">Đăng xuất</a></li>

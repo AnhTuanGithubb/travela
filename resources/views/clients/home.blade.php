@@ -1688,279 +1688,40 @@
         <div class="row">
             <div class="col-lg-6 mx-auto wow fadeInDown" data-wow-duration="1s" data-wow-delay=".25s">
                 <div class="site-heading text-center">
-                    <span class="site-title-tagline"><i class="far fa-plane"></i> Chuyến Bay</span>
-                    <h2 class="site-title">Các Chuyến Bay Phổ Biến Nhất</h2>
+                    <span class="site-title-tagline"><i class="far fa-plane"></i> Bài viết</span>
+                    <h2 class="site-title">Các Bài viết Phổ Biến Nhất</h2>
                 </div>
             </div>
         </div>
         <div class="row align-items-center">
 
-            {{-- Mục 1 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/01.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-1.png') }}"
-                                    alt="Logo Hãng 1">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
+           
+         @foreach($blogs as $blog)
+                <div class="col-md-6 col-lg-4">
+                    <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                        <span class="blog-date">{{ \Carbon\Carbon::parse($blog->created_at)->format('M d, Y') }}</span>
+                        <div class="blog-item-img">
+                            <img src="{{ asset('clients/assets/img/blog/' . $blog->image) }}" alt="Thumb">
                         </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$300</span>
+                        <div class="blog-item-info">
+                            <div class="blog-item-meta">
+                                 <ul>
+                            <li><a href="#"><i class="far fa-user-circle"></i> By {{ $blog->author }}</a></li>
+                            <li><a href="#"><i class="far fa-comments"></i> {{ number_format($blog->commentsCount) }} Comments</a></li>
+                        </ul>
                             </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
+                            <h4 class="blog-title">
+                                <a href="{{ route('blog-detail', $blog->blogId) }}">
+                                    {{ $blog->title }}
+                                </a>
+                            </h4>
+                            <a class="theme-btn mt-3" href=" {{ route('blog-detail', $blog->blogId) }} ">
+                                Đọc thêm <i class="fas fa-arrow-circle-right"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            {{-- Mục 2 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <span class="badge">Nổi bật</span>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/02.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-2.png') }}"
-                                    alt="Logo Hãng 2">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
-                        </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$450</span>
-                            </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mục 3 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/03.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-3.png') }}"
-                                    alt="Logo Hãng 3">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
-                        </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$520</span>
-                            </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mục 4 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/04.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-4.png') }}"
-                                    alt="Logo Hãng 4">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
-                        </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$630</span>
-                            </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mục 5 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/05.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-5.png') }}"
-                                    alt="Logo Hãng 5">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
-                        </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$780</span>
-                            </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mục 6 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <span class="badge badge-discount">Giảm 25%</span>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/06.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-6.png') }}"
-                                    alt="Logo Hãng 6">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
-                        </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$680</span>
-                            </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mục 7 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/07.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-1.png') }}"
-                                    alt="Logo Hãng 1">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
-                        </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$580</span>
-                            </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Mục 8 --}}
-            <div class="col-md-6 col-lg-4 col-xl-3">
-                <div class="flight-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
-                    <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                    <div class="flight-img">
-                        {{-- Sửa đường dẫn ảnh chuyến bay --}}
-                        <img src="{{ asset('clients/assets/img/flight/08.jpg') }}" alt="Ảnh chuyến bay">
-                    </div>
-                    <div class="flight-content">
-                        <div class="flight-title">
-                            <div class="flight-title-info">
-                                {{-- Sửa đường dẫn logo hãng hàng không --}}
-                                <img src="{{ asset('clients/assets/img/flight/airline-2.png') }}"
-                                    alt="Logo Hãng 2">
-                                <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                            </div>
-                            <p class="flight-date"><i class="far fa-calendar-days"></i> T8 01, 2025 - T8 30, 2025
-                            </p>
-                        </div>
-                        <div class="flight-bottom">
-                            <div class="flight-price">
-                                Từ <span>$490</span>
-                            </div>
-                            <div class="flight-text-btn">
-                                {{-- Sửa liên kết tĩnh --}}
-                                <a href="{{ url('flight-single') }}">Xem Chi tiết <i
-                                        class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
             <div class="text-center mt-3 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
                 {{-- Sửa liên kết tĩnh --}}
                 <a href="{{ url('flight-grid') }}" class="theme-btn">Khám phá thêm<i

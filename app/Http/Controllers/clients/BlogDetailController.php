@@ -4,82 +4,38 @@ namespace App\Http\Controllers\clients;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\clients\Blog;
+use App\Models\clients\BlogComment;
+use Carbon\Carbon;
 
 class BlogDetailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index($id)
     {
-        return view('clients.blog-detail');
-    }
+        // ✅ Lấy blog theo ID
+        $blog = Blog::where('blogId', $id)->firstOrFail();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        // ✅ Lấy danh sách bình luận (kèm thông tin user)
+        $comments = BlogComment::with('user')
+            ->where('blogId', $id)
+            ->orderByDesc('timestamp')
+            ->get()
+            ->map(function ($comment) {
+                // Xử lý avatar URL (nếu user có avatar thì lấy, nếu không thì dùng default)
+                $comment->avatar_url = !empty($comment->user?->avatar)
+                    ? asset('clients/assets/img/account/' . $comment->user->avatar)
+                    : asset('clients/assets/img/default-avatar.png');
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+                // Format thời gian
+                $comment->time = Carbon::parse($comment->timestamp)->format('H:i d/m/Y');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+                return $comment;
+            });
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        // ✅ Tiêu đề trang
+        $title = $blog->title;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // ✅ Trả về view cùng dữ liệu blog + comments
+        return view('clients.blog-detail', compact('blog', 'title', 'comments'));
     }
 }

@@ -5,49 +5,54 @@ namespace App\Http\Controllers\clients;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\clients\Login;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    // Hiển thị form login
+    /**
+     * Hiển thị form đăng nhập
+     */
     public function index()
     {
         $title = 'Trang Đăng Nhập';
         return view('clients.login', compact('title'));
     }
 
-    // Xử lý form login
+    /**
+     * Xử lý đăng nhập
+     */
     public function login(Request $request)
     {
+        // 1️⃣ Validate dữ liệu
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:3',
         ]);
 
-        // Tìm user theo email
+        // 2️⃣ Tìm user theo email
         $user = Login::where('email', $request->email)->first();
 
-        // Nếu không tồn tại
         if (!$user) {
             return back()->withErrors([
                 'email' => 'Email không tồn tại trong hệ thống.',
             ])->onlyInput('email');
         }
 
-        // So sánh mật khẩu trực tiếp (vì chưa mã hóa)
-        if ($user->passWord !== $request->password) {
+        // 3️⃣ Kiểm tra mật khẩu (đã mã hóa trong DB)
+        if (!Hash::check($request->password, $user->passWord)) {
             return back()->withErrors([
                 'email' => 'Email hoặc mật khẩu không đúng.',
             ])->onlyInput('email');
         }
 
-        // Kiểm tra trạng thái nếu có
+        // 4️⃣ Kiểm tra trạng thái hoạt động
         if ($user->isActive === 'n') {
             return back()->withErrors([
-                'email' => 'Tài khoản của bạn chưa được kích hoạt.',
+                'email' => 'Tài khoản của bạn đã bị khóa hoặc chưa được kích hoạt. Vui lòng liên hệ quản trị viên.',
             ]);
         }
 
-        // Lưu user vào session
+        // 5️⃣ Lưu thông tin đăng nhập vào session
         $request->session()->put('user', [
             'id' => $user->userid,
             'name' => $user->userName,
@@ -57,11 +62,14 @@ class LoginController extends Controller
         return redirect()->route('home')->with('success', 'Đăng nhập thành công!');
     }
 
-    // Đăng xuất
+    /**
+     * Đăng xuất
+     */
     public function logout(Request $request)
     {
         $request->session()->forget('user');
         $request->session()->regenerateToken();
+
         return redirect()->route('home')->with('success', 'Đăng xuất thành công!');
     }
 }

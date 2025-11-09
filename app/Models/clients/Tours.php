@@ -42,89 +42,51 @@ class Tours extends Model
         }
         return $tours; // dùng khi không cần debug
     }
- //all tuor có chưa phan trangGGGGGGGGGGGGGGGGGGG//
 
-    // public function getAllTours()
-    // {
+    public function getAllTours($perPage = 4, $sortBy = 'default') // <-- Thêm tham số $sortBy
+    {
+        // 1. Khởi tạo truy vấn cơ sở
+        $query = DB::table($this->table); // Giả sử $this->table là tên bảng 'tour'
 
-    //     $allTours = DB::table($this->table)->get();
-    //     foreach ($allTours as $tour) {
-    //         // Lấy danh sách hình ảnh thuộc về tour
-    //         $tour->images = DB::table('tbl_images')
-    //             ->where('tourId', $tour->tourId)
-    //             ->pluck('imageUrl')
-    //             ->toArray();
-    //     }
+        // 2. Áp dụng logic sắp xếp dựa trên $sortBy
+        switch ($sortBy) {
+            case 'low_price':
+                $query->orderBy('priceAdult', 'asc');
+                break;
 
-    //     return $allTours;
-    // }
-//all tuor có chưa phan trangGGGGGGGGGGGGGGGGGGG//
+            case 'high_price':
+                $query->orderBy('priceAdult', 'desc');
+                break;
 
+            case 'popular':
+                // Sắp xếp theo Số sao (star) giảm dần
+                $query->orderBy('star', 'desc')
+                    ->orderBy('priceAdult', 'asc'); // Sắp xếp phụ
+                break;
 
-    //all tuor có phan trangGGGGGGGGGGGGGGGGGGG//
-//     public function getAllTours($perPage = 1)
-// {
-//     // Lấy danh sách tour kèm ảnh và phân trang
-//     $allTours = DB::table($this->table)
-//         ->paginate($perPage);
+            case 'default':
+            default:
+                // Sắp xếp mặc định theo ID giảm dần (tour mới nhất)
+                $query->orderBy('tourid', 'desc');
+                break;
+        }
 
-//     // Gán ảnh cho từng tour
-//     foreach ($allTours as $tour) {
-//         $tour->images = DB::table('tbl_images')
-//             ->where('tourId', $tour->tourId)
-//             ->pluck('imageUrl')
-//             ->toArray();
-//     }
+        // 3. Phân trang và thực thi truy vấn
+        $allTours = $query->paginate($perPage);
 
-//     return $allTours;
-// }
-     //all tuor có phan trangGGGGGGGGGGGGGGGGGGG//
+        // 4. Gán ảnh cho từng tour (Giữ nguyên logic của bạn)
+        foreach ($allTours as $tour) {
+            $tour->images = DB::table('tbl_images')
+                ->where('tourId', $tour->tourId) // Đảm bảo đúng tên cột 'tourId'
+                ->pluck('imageUrl')
+                ->toArray();
+        }
 
-     //all tuor có  phan trangGGGGGGGGGGGGGGGGGGG + SAP XEPPPPPPPPP//
-public function getAllTours($perPage = 4, $sortBy = 'default') // <-- Thêm tham số $sortBy
-{
-    // 1. Khởi tạo truy vấn cơ sở
-    $query = DB::table($this->table); // Giả sử $this->table là tên bảng 'tour'
-
-    // 2. Áp dụng logic sắp xếp dựa trên $sortBy
-    switch ($sortBy) {
-        case 'low_price':
-            $query->orderBy('priceAdult', 'asc');
-            break;
-
-        case 'high_price':
-            $query->orderBy('priceAdult', 'desc');
-            break;
-        
-        case 'popular':
-            // Sắp xếp theo Số sao (star) giảm dần
-            $query->orderBy('star', 'desc')
-                  ->orderBy('priceAdult', 'asc'); // Sắp xếp phụ
-            break;
-
-        case 'default':
-        default:
-            // Sắp xếp mặc định theo ID giảm dần (tour mới nhất)
-            $query->orderBy('tourid', 'desc');
-            break;
+        return $allTours;
     }
-
-    // 3. Phân trang và thực thi truy vấn
-    $allTours = $query->paginate($perPage);
-
-    // 4. Gán ảnh cho từng tour (Giữ nguyên logic của bạn)
-    foreach ($allTours as $tour) {
-        $tour->images = DB::table('tbl_images')
-            ->where('tourId', $tour->tourId) // Đảm bảo đúng tên cột 'tourId'
-            ->pluck('imageUrl')
-            ->toArray();
-    }
-
-    return $allTours;
-}
     //all tuor có  phan trangGGGGGGGGGGGGGGGGGGG + SAP XEPPPPPPPPP//
 
-    
+
     public function getTourDetail($id)
     {
         $getTourDetail = DB::table($this->table)

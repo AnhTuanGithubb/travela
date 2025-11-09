@@ -8,20 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
-    
 
     protected $table = 'tbl_reviews';
-    protected $primaryKey = 'reviewId'; // ⚠️ thay bằng tên cột khóa chính thật trong bảng của bạn
-    public $incrementing = true; // nếu khóa chính là AUTO_INCREMENT
+    protected $primaryKey = 'reviewId';
+    public $incrementing = true;
     protected $keyType = 'int';
-    public $timestamps = false; // nếu bảng không có created_at, updated_at
+    public $timestamps = false;
 
     protected $fillable = [
         'tourid',
+        'userid',
         'name',
         'email',
         'rating',
         'comment',
         'timestamp'
     ];
+
+    // ✅ Thêm quan hệ đến bảng người dùng
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\clients\User::class, 'userid', 'userid');
+    }
 }

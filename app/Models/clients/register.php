@@ -27,6 +27,6 @@ class Register extends Model
         'address',
         'ipAddress',
         'isActive',
-       
+          'avatar',
     ];
 }

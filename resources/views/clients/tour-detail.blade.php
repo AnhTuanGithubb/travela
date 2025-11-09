@@ -30,14 +30,14 @@
                             </div>
                             <div class="listing-rate">
                                 @php
-                                             $rating = round($tourDetail->star);
-                                         @endphp
+                                    $rating = round($tourDetail->star);
+                                @endphp
 
-                                         @for ($i = 0; $i < $rating; $i++)
-                                             <i class="fas fa-star text-warning"></i>
-                                         @endfor
+                                @for ($i = 0; $i < $rating; $i++)
+                                    <i class="fas fa-star text-warning"></i>
+                                @endfor
                                 <span class="listing-rate-type">Excellent</span>
-                                <span class="listing-rate-review">(2.5k Lượt xem)</span>
+
                             </div>
                         </div>
                         <div class="listing-item">
@@ -81,8 +81,8 @@
                                             <i class="far fa-earth-americas"></i>
                                         </div>
                                         <div class="listing-feature-content">
-                                            <h6>Tour Type</h6>
-                                            <span>Historical Place</span>
+                                            <h6>Lượt xem</h6>
+                                            <span><i class="far fa-eye"></i> {{ number_format($tourDetail->view) }} lượt xem</span>
                                         </div>
                                     </div>
                                 </div>
@@ -521,8 +521,9 @@
                                                     {{-- Nếu bạn chưa có ảnh người dùng, dùng ảnh mặc định 
                                                         SAU NÀY SẼ HIỆN ẢNH TỪ PROFILE CỦA NGƯỜI DÙNG CLIENTS
                                                     --}}
-                                                    <img src="{{ asset('clients/assets/img/account/default.jpg') }}"
-                                                        alt="User Avatar">
+                                                    <img src="{{ $review->avatar_url ?? asset('clients/assets/img/default-avatar.png') }}"
+                                                        alt="Avatar" width="50" height="50"
+                                                        class="rounded-circle border">
 
                                                     <div class="listing-review-author-info">
                                                         <div>
@@ -690,25 +691,28 @@
                                 <!-- Hiển thị danh sách review -->
                                 <div class="listing-reviews mt-5">
                                     <h4>Reviews</h4>
+
                                     @forelse($reviews as $review)
-                                        <div class="review-item border-bottom py-3">
-                                            <div class="d-flex justify-content-between">
-                                                <strong>{{ $review->name }}</strong>
-                                                <span>
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        <span
-                                                            style="color:{{ $i <= $review->rating ? '#FFD700' : '#ccc' }}">&#9733;</span>
-                                                    @endfor
-                                                </span>
+                                        <div class="review-item border-bottom py-3 d-flex align-items-start gap-3">
+                                            <img src="{{ $review->avatar_url ?? asset('clients/assets/img/default-avatar.png') }}"
+                                                alt="Avatar" width="50" height="50"
+                                                class="rounded-circle border">
+
+                                            <div>
+                                                <strong>{{ $review->name }}</strong><br>
+                                                <small>{{ $review->email }}</small>
+                                                <p class="mb-0">{{ $review->comment }}</p>
+                                                <small class="text-muted">{{ $review->time }}</small>
                                             </div>
-                                            <small>{{ $review->email }}</small>
-                                            <p class="mb-0">{{ $review->comment }}</p>
-                                            <small class="text-muted">{{ $review->timestamp }}</small>
                                         </div>
                                     @empty
                                         <p>No reviews yet. Be the first to review this tour!</p>
                                     @endforelse
                                 </div>
+
+
+
+
 
                             </div>
                         </div>
@@ -1075,7 +1079,7 @@
                     } else {
                         // Lỗi server (500)
                         toastr.error("Gửi đánh giá thất bại. Lỗi máy chủ.",
-                        "Lỗi Hệ thống!");
+                            "Lỗi Hệ thống!");
                     }
                 }
             });

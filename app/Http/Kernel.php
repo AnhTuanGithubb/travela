@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
 
         //check đang nhap moi cho dat tour
         'checklogin' => \App\Http\Middleware\CheckLogin::class,
+        //'is_admin' => \App\Http\Middleware\IsAdmin::class,
     ];
 }
